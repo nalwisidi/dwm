@@ -267,10 +267,8 @@ static Drw *drw;
 static Monitor *mons, *selmon;
 static Window root, wmcheckwin;
 
-char *argv0;
 /* configuration, allows nested code to access above variables */
 #include "config.h"
-extern char *argv0;
 
 /* compile-time check if all tags fit into an unsigned int bit array. */
 struct NumTags { char limitexceeded[LENGTH(tags) > 31 ? -1 : 1]; };
@@ -2163,19 +2161,4 @@ main(int argc, char *argv[])
 	cleanup();
 	XCloseDisplay(dpy);
 	return EXIT_SUCCESS;
-}
-
-static void
-self_restart(const Arg *arg)
-{
-    if (arg) (void)arg;
-
-    char *const argv[] = { argv0, NULL };
-
-    if (fork() == 0) {
-        setsid();
-        execvp(argv0, argv);
-        perror("dwm: execvp failed");
-        exit(1);
-    }
 }
