@@ -1,0 +1,23 @@
+# Object files and the compiled binary
+*.o
+dwm
+
+# Compressed source tarball (from `make dist`)
+dwm-*.tar.gz
+
+# Auto-generated header
+config.h
+
+# Patch artifacts
+*.orig
+*.rej
+
+# Optional: if you store local patches separately
+patches/
+
+# Editor junk
+*~
+*.swp
+*.swo
+*.bak
+*.tmp
